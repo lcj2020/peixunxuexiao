@@ -381,39 +381,62 @@ button.primary-blue:hover, .button-link.primary-blue:hover {
 
 .course-categories {
     list-style: none;
-    padding-left: 0;
+    padding: 0;         /* 移除所有方向的内边距 */
+    margin: 0 auto 25px auto; /* 上外边距为0，左右auto，下外边距保留25px (或根据需要调整)
+                                  这个下外边距是ul.course-categories整体与其下方元素的间距 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.admissions-section ul.course-categories { /* 确保body标签上有 class="admissions-section" */
+    list-style: none;
+    padding-block-start: 0;
+    padding-block-end: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    margin-block-start: 0;
+    margin-block-end: 25px; /* 控制整个列表块与下方元素的间距 */
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* max-width: 800px; */ /* 如果希望整个列表区域有最大宽度并居中 */
 }
 .course-category {
-    margin-bottom: 25px;
+    margin-bottom: 25px; /* 这是卡片之间的间距 */
+    /* 移除独立的左右margin，因为父级ul的align-items:center会处理居中 */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
     border: 1px solid #DEE2E6;
     border-radius: 10px;
     overflow: hidden;
-    max-width: 700px; /* 设置一个最大宽度，例如700px，可以根据您的内容调整 */
-    margin-left: auto;   /* 当块级元素有宽度时，auto margin 可以使其水平居中 */
-    margin-right: auto;
+    width: 100%; /* 宽度由父级flex容器的align-items和自身的max-width决定 */
+    max-width: 700px; /* 专业卡片的最大宽度 */
+}
+.course-categories li.course-category:last-child {
+    margin-bottom: 0; /* 移除最后一个卡片的底部外边距，避免双重间距 */
 }
 .course-category-title {
     background: linear-gradient(to right, #1ABC9C, #20C997); /* 青绿色渐变 */
     color: white;
     padding: 18px 25px;
-    font-size: 1.45em; /* 对于图片中的显示，这个字体可能偏大，可以调整为 1.2em 或 1.3em */
+    font-size: 1.45em;
     font-weight: 600;
     display: flex;
-    justify-content: space-between; /* 这会使标题文字靠左，<small>标签靠右 */
+    justify-content: space-between;
     align-items: center;
-    text-align: left; /* 确保标题文字本身是左对齐的，而不是继承居中 */
 }
 .course-list {
     list-style: none;
     padding: 20px 25px 25px 30px;
     background-color: #F8F9FA;
-    text-align: left; /* 确保列表内容是左对齐的 */
 }
 .course-list li {
     padding: 12px 0;
     border-bottom: 1px dashed #CED4DA;
     color: #495057;
-    font-size: 1.08em; /* 对于图片中的显示，这个字体也可能偏大，可以调整为 1em */
+    font-size: 1.08em;
 }
 .course-list li:last-child { border-bottom: none; }
 .course-list li strong { color: #0D6EFD; } /* 科技蓝 */
