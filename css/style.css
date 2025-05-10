@@ -53,19 +53,35 @@ nav {
 nav ul.nav-row {
     list-style-type: none;
     padding: 0 5px;
-    margin: 0 auto;
+    /* 调整margin，确保每个ul之间有合适的间距，并且整体在nav内居中 */
+    /* 第一个ul的margin-bottom会给第二行ul留出空间 */
+    /* 为简单起见，可以给nav设置text-align:center，然后ul设为inline-block */
+    /* 或者继续用flexbox，但要确保nav本身能容纳两个ul */
+    margin: 0 auto; /* 让每个ul在自己的行内居中其内容 */
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap;  <-- 保持注释或移除，因为每个ul就是一行 */
+}
+
+/* 给第一个ul添加底部外边距，以便与第二个ul分隔开 */
+nav ul.nav-row:first-child {
+    margin-bottom: 2px; /* 或您希望的行间距，可以小一点 */
+}
+
+
+/* 如果希望第二行ul与第一行ul之间没有额外的垂直间距 */
+nav ul.nav-row + ul.nav-row { /* 选择紧跟在ul.nav-row后的ul.nav-row */
+    margin-top: 0;
+    padding-top: 0; /* 如果ul.nav-row有padding-top的话 */
 }
 
 nav ul.nav-row li {
-    margin: 5px 6px;
+    margin: 5px 6px; /* li之间的间距 */
 }
 
 nav ul.nav-row li a {
-    color: #0D6EFD; /* 导航文字 - 科技蓝 */
+    color: #0D6EFD;
     text-decoration: none;
     padding: 10px 18px;
     display: block;
@@ -78,13 +94,13 @@ nav ul.nav-row li a {
 }
 
 nav ul.nav-row li a:hover {
-    background-color: #0D6EFD; /* 悬停时用科技蓝背景 */
+    background-color: #0D6EFD;
     color: white;
     transform: translateY(-2px);
 }
 
 nav ul.nav-row li a.active {
-    background-color: #0B5ED7; /* 激活时用更深的科技蓝 */
+    background-color: #0B5ED7;
     color: white;
     box-shadow: 0 2px 5px rgba(13, 110, 253, 0.4);
 }
@@ -524,19 +540,20 @@ footer a:hover {
     header h1 { font-size: 2.2em; }
     header p.subtitle { font-size: 1.05em; }
     .section-title { font-size: 2em; }
-    nav ul.nav-row { flex-direction: column; align-items: stretch; }
-    nav ul.nav-row li a { text-align: center; }
     .core-advantages, .quick-nav, .gallery-grid, .teachers-grid, .contact-info-grid {
         grid-template-columns: 1fr;
     }
     .admissions-section div[style*="flex:1"],
     .special-bg-section div[style*="flex:1"] { min-width: 100%; }
+    nav ul.nav-row li a {
+        padding: 8px 12px; /* 例如，减小内边距 */
+        font-size: 0.9em; /* 例如，减小字体 */
+    }
 }
 
 @media (max-width: 480px) {
-    .container { width: 95%; padding: 20px 15px; }
+    /* .container { width: 95%; padding: 20px 15px; }
     header h1 { font-size: 2em; }
     .section-title { font-size: 1.8em; }
-    button, .button-link { font-size: 1.05em; padding: 12px 25px; }
+    button, .button-link { font-size: 1.05em; padding: 12px 25px; } */
 }
-/* --- END OF FILE style.css (CORRECTED - SCHEME 3 WITH NAV-BUTTON FIX) --- */
